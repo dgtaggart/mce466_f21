@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>MCE466 - Fall 2021</title>
+<meta NAME="Author" CONTENT="David Taggart">
+<link rel="shortcut icon" type="image/png" href="mce.png">
+
+<style>
+h1{font-family: Arial, Helvetica, sans-serif;font-size: 20px;}
+h2{font-family: Arial, Helvetica, sans-serif;font-size: 20px;}
+p{font-family: Arial, Helvetica, sans-serif;font-size: 18px;} 
+span{font-family: arial, helvetica, sans-serif; font-size: 12pt;} 
+table {font-family: Arial, Helvetica, sans-serif;font-size: 14px;border="0" cellpadding="5" cellspacing="0" 	}
+</style>
+</head>
+
+<body class="content layout-2" role="document">
+<div class="container-fluid"><main>
+<div class="row">
+<div class="col-xs-12 col-sm-offset-2 col-sm-8">
+<p align="right"><img src="https://personal.egr.uri.edu/taggart/courses/mce466/URI_logo.png" alt="logo" width="150" height="106" style="float: left;" /></p>
+<p align="right"><i>Fall 2021</i></p>
+<p align="right"><i></i></p>
+<h2 align="center"></h2>
+<h2 align="center">MCE 466 - Introduction to Finite Element Methods</h2>
+<p align="center"><i>(<a href="https://personal.egr.uri.edu/taggart/courses/mce466" target="_blank">https://personal.egr.uri.edu/taggart/courses/mce466</a>)</i></p>
+<p align="center">&nbsp;</p>
+<hr color="#FF9900" />
+<div align="center">
+<p align="center">&nbsp;</p>
+<div><center>
+<table border="1" cellspacing="0" style="border-collapse: collapse; border: 1px solid black; padding: 4em; width: 90%; height: 234px;">
+<!-- <p>&nbsp;</p> -->
+<tr style="height: 36px;">
+<td width="20%"><span><strong>&nbsp; Instructor:</strong></span></td>
+<td width="80%"><span>&nbsp; &nbsp; David G. Taggart, 289 Fascitelli, 874-5934, <a href="mailto:taggart@uri.edu">taggart@uri.edu</a> </span></td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Office Hours:</strong></span></td>
+<td><span>&nbsp; &nbsp; TBD / By appointment, In-person or via Zoom (<a href="https://uri-edu.zoom.us/j/7846696676" target="_blank" rel="noopener">Zoom Personal Room</a>)</span></td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Class Location / Time:</strong></span></td>
+<td><span>&nbsp; &nbsp; Fascitelli 045, Monday/Wednesday, 2:00-3:15 PM</span></td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Required Text:</strong></span></td>
+<td><span><strong>&nbsp; &nbsp; A First Course in the Finite Element Method</strong>, 5th or 6th edition, <br /></span> <span>&nbsp; &nbsp; by Daryl L. Logan, Cengage, 2012 or 2017.</span></td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Software:</strong></span></td>
+<td><span><strong>&nbsp; &nbsp; ABAQUS Student Edition</strong> (free download from <a href="http://academy.3ds.com/software/abaqus-student-edition/" target="_blank" rel="noopener">3DS Academy</a>, <br />
+&nbsp; &nbsp;&nbsp;<strong>Matlab</strong> <a href="https://web.uri.edu/research-computing/matlab/" target="_blank" rel="noopener">(free to URI Students)</a><br />
+<!-- &nbsp; &nbsp;&nbsp;<strong>Document scanner</strong> <a href="https://www.camscanner.com/user/download" target="_blank" rel="noopener">(Camscanner</a>, or similar app)</span></td> -->
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Grading:</strong></span></td>
+<td><span>&nbsp; &nbsp; Attendance (5%), Three Exams (16.7% each = 50%), Six Computer Assignments (7.5% each = 45%)</span></td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; FEA Vendor&nbsp; Links:</strong></span></td>
+<td><span>&nbsp; &nbsp; <a href="http://www.3ds.com/products/simulia/overview/" target="_blank" rel="noopener">ABAQUS / SIMULIA</a>, <a href="http://www.ansys.com">ANSYS</a>, <a href="http://www.adina.com" target="_blank" rel="noopener">ADINA</a>, <a href="http://www.solidworks.com/sw/products/simulation/simulation-professional.htm" target="_blank" rel="noopener">SOLIDWORKS Simulation</a>, <a href="http://www.mscsoftware.com/product/msc-nastran" target="_blank" rel="noopener">MSC NASTRAN</a></span></td>
+</tr>
+<tr></tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Course Links: </strong></span></td>
+<td><span>&nbsp; &nbsp; <a href="/d2l/home" target="_blank" rel="noopener">URI Brightspace</a><br />&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://guac.egr.uri.edu/" target="_blank" rel="noopener">Remote Access to ECC Computers</a><br /><!--&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://personal.egr.uri.edu/taggart/courses/mce466/videos/video_links.htm" target="_blank" >Alternate Link to Course Videos</a></span> --></span></td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; Course Policies: </strong></span></td>
+<td>
+<ul>
+<li><span>MCE 301 and 372 are required prerequisites for this course. Students who have not taken these courses should contact me immediately.</span></li>
+<li><span>You are expected to attend all classes, read the listed text sections and complete the assigned homework problems.</span></li>
+<li><span>Academic integrity: According to <a href="https://web.uri.edu/studentconduct/files/2015-2017-Student-Handbook.pdf">URI's student 
+handbook</a> (p. 12), "A student&rsquo;s name on any written work including assignments, lab reports, internship reports, papers, or 
+examinations, shall be regarded as assurance that the work is the result of the student&rsquo;s own thought and study." While group 
+study is generally encouraged in this course, each student is expected to submit work that they have developed on their own.</span></li>
+<li><span>Any student with a documented disability is welcomed to request accommodations. If you have any such requests, 
+please see me as soon as possible. For more information, contact <a href="http://www.uri.edu/disability_services" www="" uri="" edu="" disability_services="" a="">
+Disability Services for Students Office</a>, 330 Memorial Union, 874-2098,</span>
+ </a></li>
+</ul>
+</td>
+</tr>
+<tr style="height: 36px;">
+<td><span><strong>&nbsp; COVID Information:</strong></span></td>
+<td>
+<ul>
+<li><span>The University is committed to delivering its educational mission while protecting the health and safety of our community. While the university 
+has worked to create a healthy learning environment for all, it is up to all of us to ensure our campus stays that way.</span></li>
+<li><span>As members of the URI community, students are required to comply with standards of conduct and take precautions to keep themselves and others safe. 
+Visit <a href="https://web.uri.edu/coronavirus/">web.uri.edu/coronavirus/</a> for the latest information about the URI COVID-19 response.</span></li>
+<li><span>Universal indoor masking is required by all community members, on all campuses, regardless of vaccination status. If the universal mask mandate is 
+discontinued during the semester, students who have an approved exemption and are not fully vaccinated will need to continue to wear a mask 
+indoors and maintain physical distance.</span></li>
+<li><span>Students who are experiencing symptoms of illness should not come to class.  Please stay in your home/room and notify URI Health Services via phone at 401-874-2246.</span></li>
+<li><span>If you are already on campus and start to feel ill, go home/back to your room and self-isolate. Notify URI Health Services via phone immediately at 401-874-2246.</span></li>
+<li><span>If you are unable to attend class, please notify me prior to the start of class.</span></li>
+</ul>
+</tr>
+</tbody>
+</table>
+
+<!-- <p>&nbsp;</p> -->
+<h3 align="center"><span style="font-family: arial, helvetica, sans-serif; font-size: 14pt;"><strong>Course Outline (tentative)</strong></span></h3>
+<table border="1" cellspacing="0" style="border-collapse: collapse; border: 1px solid black; padding: 4em; width: 90%; height: 1771px;">
+<tbody>
+<tr>
+<td align="center" width="20%"><span><strong>Week # - Dates</strong></span></td>
+<td align="center" width="80%"><span><strong>Topics &amp; Assignments</strong></span></td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>1 - 9/8</span></td>
+<td style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Course Introduction  <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466//lectures/course_intro_spring_21.pptx">Powerpoint</a>)</span>--></li>
+<li><span>Chapter 1 Introduction <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch1.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/uMGA" target="_blank">video</a>)</span>--></li>
+<li><span>Recommended Reading: <a href="http://paulino.ce.gatech.edu/courses/cee361/handouts/wrcabm.htm" target="_blank">Warning: The Computed Answer May be Wrong</a>, by G. H. Paulino, 1999</span></li>
+<li><span> Abaqus Demo <!-- (<a href="https://uri.techsmithrelay.com/HRH5" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/abaqus_demo.cae">abaqus_demo.cae</a>) </span>--></li>
+<li><span>Appendix A, B Math &amp; Mechanics Review <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/app.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/V0N5" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/app_notes.pdf" target="_blank">notes</a>)</span>--></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw1.pdf" target="_blank">HW 1</a> - A.1, 7, 9, 10 and B.3 
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw1_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/t2G0" target="_blank">video</a>  /  
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw1_notes.pdf" target="_blank">notes) </a>--></span></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>2 - 9/13 &amp; 15</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 2 (2.1-2.6) - Spring elements <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch2.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/Ld9Z" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch2_notes.pdf" target="_blank">notes</a>)</span>--></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw2.pdf" target="_blank">HW 2</a> - 2.13, 15 and 21 
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw2_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/HqqJ" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw2_notes.pdf" target="_blank">notes</a>)</span><span></span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+
+<tr>
+<td align="center" style="width: 20%;"><span>3 - 9/20 &amp; 22</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 3 (3.1-3.8, 3.10-3.11) - Truss Elements <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch3.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/fwqe" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch3_notes.pdf" target="_blank">notes</a>)</span> --></li>
+<li><span>Matlab Truss analysis <!-- (<a href="https://uri.techsmithrelay.com/P5iQ" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/ca/logan_example_3_5.m" target="_blank">Example 3.5 - Matlab Script</a>)</span> --></li>
+<li><span>Abaqus Truss analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/truss_tutorial.pdf" target="_blank">Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/gX7n" target="_blank">video</a>)</span> --></li>
+</ul>
+<p><span>&nbsp; &nbsp; <u>Assignments</u></span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw3.pdf"></a></p>
+<ul>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw3.pdf" target="_blank">HW 3</a> - 3.8, 15a, 18a, 23, 27, 56 and 58a
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw3_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/zzag" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw3_notes.pdf">notes</a>)</span> --></li>
+<li><span>Computer Assignment #1 <!--<a href="https://personal.egr.uri.edu/taggart/courses/mce466/ca/ca1_s21.docx" target="_blank">Computer Assignment #1</a></span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+
+<tr>
+<td align="center" style="width: 20%;"><span>4 - 9/27 &amp; 29</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 4 (4.1-4.5) - Beam Elements<!-- a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch4.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/Tsag" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch4_notes.pdf" target="_blank">notes</a>)</span> --></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw4.pdf" target="_blank">HW 4</a>
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw4_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/79CQ" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw4_notes.pdf" target="_blank">notes</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw4.m" target="_blank">hw4.m</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+
+<tr>
+<td align="center" style="width: 20%;"><span>5 - 10/4 &amp; 6</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Abaqus Beam analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/beam_tutorial.pdf" target="_blank">Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/6RRT" target="_blank">video</a>)</span></li>
+<li><span>Chapter 5 (5.1-5.5) - Frame Elements (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch5.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/a8Qe" target="_blank">video</a>)</span> --></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Computer Assignment #2
+<!--  (<a href="https://uri.techsmithrelay.com/9md7" target="_blank">video on hand calculations</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/ca/ca2_notes.pdf" target="_blank">notes</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+
+<tr>
+<td align="center" style="width: 20%;"><span>6 - 10/11 &amp; 13</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li>No class on Monday (Columbus Day)</li>
+<li><span><strong>Exam 1 (Wednesday) </strong>- HW 1 - 3</span></li>
+<li><span>Chapter 6 (6.1-6.4) - Plane stress analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch6.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/y4M2" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch6_notes.pdf" target="_blank">notes</a>)</span> --></li>
+<li><span>Abaqus plane stress analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/plane_stress_tutorial.pdf" target="_blank">Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/VTjF" target="_blank">video</a>)</span> --></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw5.pdf" target="_blank">HW 5 - 6.3c, 6.11b and 6.13</a> 
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw5_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/KyrC" target="_blank">video</a> /  
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw5_notes.pdf" target="_blank">notes</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw5.m" target="_blank">hw5.m</a>)</span> --></li>
+<li><span>Computer Assignment #3</a> 
+<!-- (<a href="https://uri.techsmithrelay.com/H7GQ" target="_blank">video</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>7 - 10/18 &amp; 20</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 7 (7.1-7.4) - Practical considerations <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch7.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/bNCi" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch7_notes.pdf" target="_blank">notes</a>)</span> --></li>
+<li><span>Chapter 8 - LST Elements <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch8.pptx" target="_blank">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/PPHj" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch8_notes.pdf" target="_blank">notes</a>)</span> --></li>
+
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw6.pdf" target="_blank">HW 6</a> 
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw6_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/xwUN" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw6_notes.pdf" target="_blank">notes</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>8 - 10/25 &amp; 27</span></td>
+
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 9 Axisymmetric Elements <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch9.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/B6QK" target="_blank">video</a>)</span> --></li>
+<li><span>Abaqus axisymmetric analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/axisymmetric_tutorial.pdf" target="_blank">Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/yBoA" target="_blank">video</a>)</span> --></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Computer Assignment #4
+<!-- <a href="https://personal.egr.uri.edu/taggart/courses/mce466/ca/ca4_notes.pdf">(notes)</a> --></span></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>9 - 11/1 &amp; 3</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 10 - Isoparametric Formulation, Numerical Integration <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch10.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/TS4n" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch10_notes.pdf" target="_blank">notes</a>)</span> --></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw7.pdf" target="_blank">HW 7</a> 
+<!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw7_soln.pdf" target="_blank">solution</a> / 
+<a href="https://uri.techsmithrelay.com/iDWF" target="_blank">video</a> / 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/hw/hw7_notes.pdf" target="_blank">notes</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>10 - 11/8 &amp; 10</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li>No class on Wednesday (Veterans Day Makeup)</li>
+<li><span>Review</span></li>
+<li><span><strong>Exam 2 (Thursday)</strong> - HW 4 - 7 
+ <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/exam_2_equation_sheets.pdf" target="_blank">equation sheets</a>,
+ <a href="https://personal.egr.uri.edu/taggart/courses/mce466/exam_2_solution.pdf" target="_blank">solution</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td align="center" style="width: 20%;"><span>11 - 11/15 &amp; 17</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Chapter 11 - 3-D analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch11.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/DdfQ" target="_blank">video</a>)</span> --></li>
+<li><span>Abaqus 3-D analysis <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/3D_analysis_tutorial.pdf" target="_blank">Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/GjXR" target="_blank">video</a>)</span> --></li>
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Computer Assignment #5</a> 
+<!-- (<a href="https://uri.techsmithrelay.com/HlhQ" target="_blank">video</a>)</span> --></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>12 - 11/22 &amp; 24</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Additional topics <!-- (<a href="https://personal.egr.uri.edu/taggart/courses/mce466/lectures/ch12_13_buckling.pptx">Powerpoint</a> / 
+<a href="https://uri.techsmithrelay.com/J0di" target="_blank">video</a>) --></li>
+<!-- <li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/column_buckling_tutorial.pdf" target="_blank">Column Buckling Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/orjf" target="_blank">video</a></li>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/plate_bending_tutorial.pdf" target="_blank">Plate Bending Tutorial</a> / 
+<a href="https://uri.techsmithrelay.com/8JkP" target="_blank">video</a></li>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/tutorials/heat_transfer_examples.pdf" target="_blank">Heat Transfer Examples</a> / 
+<a href="https://uri.techsmithrelay.com/fh1W" target="_blank">video</a></li> 
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/ca/ca6_Logan_example_16.7.pdf" target="_blank">Transient Heat Transfer (Abaqus demo)</a> / 
+<a href="https://uri.techsmithrelay.com/STcb" target="_blank">video</a></li> 
+</span></li> -->
+</ul>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Computer Assignment #6</span></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>13 - 11/29 &amp; 12/1</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<ul>
+<li><span>Additional topics (cont.)
+<!-- <a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/vibrating_beam_demo.pdf">Vibrating Beam Demo</a> 
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/vibrating_beam_demo_beam_elements.cae">beam element model</a>, 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/vibrating_beam_demo_beam_elements.inp">beam element .inp file</a>, 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/vibrating_beam_demo.cae">plane stress model</a>) </span></li>
+<li><span>Dynamic Contact
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/dynamic_contact.cae">Beam impact model</a>) </span></li>
+<li><span>Textile modeling using TexGen
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/weave_2x2.inp">TexGen .inp file</a>, 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/weave_2x2_mesh_data.inp">mesh_data file</a>, 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/weave_2x2.eld">.eld file</a>
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/weave_2x2.ori">.ori file</a>) </span></li>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/topology_optimization_example.pdf">Topology Optimization Demo</a> 
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/topology_optimization_demo.cae">model</a>) </span></li>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/viscoelasticity_example.pdf">Viscoelasticity Demo</a> 
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/viscoelasticity_demo.cae">model</a>) </span></li>
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/plasticity_example.pdf">Plasticity Demo</a> 
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/plasticity_demo_1.cae">model 1</a>, 
+<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/plasticity_demo_2.cae">model 2</a>) </span></li>
+<li><span><a href="https://uri.campuslabs.com/eval-home/">IDEA Course Evaluation</a> 
+(available now through April 29th, 11:59 PM) </span> --></li>
+</ul>
+<!--
+<li><span><a href="https://personal.egr.uri.edu/taggart/courses/mce466/demoss/transducer.pdf">Transducer vibration </a> 
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/transducer_axisym.cae">Axisymmetric model</a>, 
+(<a href="https://personal.egr.uri.edu/taggart/courses/mce466/demos/transducer_3D.cae">3D model</a>, ) </span></li>
+</ul>
+-->
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Continued work on computer assignments</span></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>14 - 12/6 &amp; 12/8</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Continued work on computer assignments</span></li>
+</ul>
+</td>
+</tr>
+<!-- **************************************************************************************************************** -->
+<tr>
+<td align="center" style="width: 20%;"><span>15 - 12/13</span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <u>Topics</u></span>
+<span>&nbsp; &nbsp; <u>Assignments</u></span>
+<ul>
+<li><span>Continued work on computer assignments</span></li>
+</ul>
+</td>
+</tr>
+
+
+<tr>
+<td align="center" style="width: 20%;"><span>TBD <!-- <br/>11:30-2:30 <br/>--> </span></td>
+<td align="left" style="width: 80%;"><br/><span>&nbsp; &nbsp; <strong>Exam 3</strong> (Abaqus)<br/></span><br/>
+</td>
+</tr>
+</tbody>
+</table>
+</main>
+</div>
+</body>
+</html>
