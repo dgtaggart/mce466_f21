@@ -25,7 +25,7 @@ function truss_2D
 %   bcval = a vector containing boundary condition values associated with
 %           the dofs in 'bcdof'
 %----------------------------------------------------------------------------%
-clear; clc; format long
+clear; clc; format long; close all
 %-------------------- Begin model definition --------------------
 %
 %---------------------------
@@ -52,6 +52,10 @@ E=30e6;
 %
 %-------------------- End model definition --------------------
 %
+%---------------------------
+%  plot truss geometry
+%---------------------------
+plot_truss(node_def,elements)
 %---------------------------
 %  control input data
 %---------------------------
@@ -295,3 +299,62 @@ for i=1:n
     kk(c,c)=1;
     ff(c)=bcval(i);
 end
+%
+%--------------------------------------------------------------------
+%
+function plot_truss(joint_def,member_def)
+%
+jsiz=size(joint_def);
+msiz=size(member_def);
+nj=jsiz(1);
+nm=msiz(1);
+x=joint_def(:,1);
+y=joint_def(:,2);
+ei=member_def(:,1);
+ej=member_def(:,2);
+icolor=1;
+%
+%
+A=member_def(:,3);
+Amax=max(A);
+%
+labels=1;
+if labels==1
+    if icolor==1
+        for i=1:nj
+            plot(x(i),y(i),'*') % Drawing nodes
+            t=[' ',num2str(i)];
+            text(x(i)+0.015,y(i)+0.015,t,'Color','b');
+            hold on
+        end
+    end
+end
+for k=1:nm
+    if A(k)>.01*Amax
+        str2=num2str(k);
+        Xi(k)=x(ei(k));
+        Yi(k)=y(ei(k));
+        Xj(k)=x(ej(k));
+        Yj(k)=y(ej(k));
+        if icolor==1
+            line([Xi(k) Xj(k)],[Yi(k) Yj(k)],'LineWidth',2,'Color','b')
+        end
+        if icolor==2
+            line([Xi(k) Xj(k)],[Yi(k) Yj(k)],'LineWidth',2,'Color','r')
+        end
+        if icolor==3
+            line([Xi(k) Xj(k)],[Yi(k) Yj(k)],'LineWidth',2,'Color','g')
+        end
+        if icolor==1
+            if labels==1
+                a=(Xi(k)+Xj(k))/2;
+                b=(Yi(k)+Yj(k))/2;
+                tt=[' e',num2str(k)];
+                text(a,b,tt,'Color','r');
+            end
+        end
+        hold off
+    end
+end
+axis equal
+
